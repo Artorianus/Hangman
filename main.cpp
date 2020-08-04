@@ -7,14 +7,12 @@ string word, guessString;
 int attempts, guessed[100], cnt, sizeOfWord;
 int main()
 {
-    ios_base::sync_with_stdio(0);
     cout << "Enter the word to guess and number of letter attempts: ";
     cin >> word >> attempts;
     system("cls");
     sizeOfWord = word.size();
-    cout << "The number of attempts left is: " << attempts << '\n';
+    cout << "The number of attempts left is: " << attempts << "\n";
     while( attempts && cnt != sizeOfWord ){
-        cout << '\n';
         for( int i = 0; i < sizeOfWord; i++ ){
             if( guessed[i] )
                 cout << word[i];
@@ -22,16 +20,17 @@ int main()
                 cout <<'_';
             cout << " ";
         }
-        cout << "\n\n" << "Enter a letter or a full word: ";
+        cout << "\n" << "Enter a letter or a full word: ";
         cin >> guessString;
+        cout << "\n\n";
         if( guessString.size() == 1 ){
             int pos = word.find( guessString );
             if( pos >= 0 && pos < sizeOfWord ){
                 if( guessed[pos] ){
-                    cout << "You have already guessed the letter..." << '\n';
+                    cout << "You have already guessed the letter..." << "\n\n";
                 }
                 else{
-                    cout << "You guessed a letter!" << '\n';
+                    cout << "You guessed a letter!" << "\n";
                     for( int i = 0; i < sizeOfWord; i++ ){
                         if( word[i] == guessString[0] )
                             guessed[i]++,
@@ -40,9 +39,9 @@ int main()
                 }
             }
             else{
-                cout << "You made a wrong guess and lost an attempt..." << '\n';
+                cout << "You made a wrong guess and lost an attempt..." << "\n";
                 attempts--;
-                cout << "Attempts remaining: " << attempts << '\n';
+                cout << "Attempts remaining: " << attempts << "\n";
             }
         }
         else{
@@ -57,5 +56,6 @@ int main()
         }
         else
             cout << "Sorry, you failed to guess the word: " << word;
-    return 0;
+    cout << '\n';
+    system("pause");
 }
